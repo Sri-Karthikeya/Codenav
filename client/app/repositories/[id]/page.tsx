@@ -459,29 +459,6 @@ export default function RepositoryPage({ params }: { params: Promise<{ id: strin
                   </p>
                   <AskAI analysisId={id} />
                 </div>
-
-                <div className="rounded-2xl border border-border bg-card p-5">
-                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">
-                    Example questions
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {EXAMPLE_QUESTIONS.map((q) => (
-                      <button
-                        key={q}
-                        onClick={() => {
-                          const input = document.getElementById("ai-query") as HTMLInputElement;
-                          if (input) {
-                            input.value = q;
-                            input.dispatchEvent(new Event("input", { bubbles: true }));
-                          }
-                        }}
-                        className="rounded-full border border-border bg-secondary px-3 py-1.5 text-xs text-muted-foreground transition-all hover:border-primary/30 hover:text-primary"
-                      >
-                        {q}
-                      </button>
-                    ))}
-                  </div>
-                </div>
               </div>
             )}
           </>
@@ -601,6 +578,20 @@ function AskAI({ analysisId }: { analysisId: string }) {
           )}
         </div>
       )}
+      <div className="rounded-2xl border border-border bg-card p-5">
+        <h3 className="mb-3 text-sm font-medium text-muted-foreground">Example questions</h3>
+        <div className="flex flex-wrap gap-2">
+          {EXAMPLE_QUESTIONS.map((q) => (
+            <button
+              key={q}
+              onClick={() => setQuestion(q)}
+              className="rounded-full border border-border bg-secondary px-3 py-1.5 text-xs text-muted-foreground transition-all hover:border-primary/30 hover:text-primary"
+            >
+              {q}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
