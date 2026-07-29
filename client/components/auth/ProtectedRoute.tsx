@@ -18,7 +18,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Loader size="lg" text="Checking your session..." />
+        <Loader size="lg" text="Loading..." direction="col" />
       </div>
     );
   }
